@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <a routerLink="/main-page/{{userID}}"><span>DecoRoom</span></a>
+  <nav>
+      <a *ngIf="userID" class="fa-solid fa-magnifying-glass" routerLink="/products-page/{{userID}}">Buscar</a>
+      <a *ngIf="user && userID" class="fas fa-shopping-cart" routerLink="/shopping-cart/{{user.name}}/{{userID}}">Cart</a>
+      <a *ngIf="shopUser" class="fa-solid fa-shop" routerLink="/shop-page/{{shopUser.name}}/{{userID}}">Shop</a>
+      <a *ngIf="user && userID" class="fa-solid fa-receipt" routerLink="/my-orders/{{userID}}">Recibos</a>
+      <a *ngIf="userID" routerLink="/user/{{userID}}"> <span class="fa-solid fa-user" ></span> Mi cuenta</a>
+      <a *ngIf="userID" routerLink="/login"> <span class="fa-solid fa-user" ></span> Cerrar Sesion</a>
+  </nav>
+</mat-toolbar>

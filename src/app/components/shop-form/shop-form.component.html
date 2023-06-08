@@ -1,0 +1,78 @@
+<body>
+  <div class="row">
+      <div class="left">
+          <app-global-navbar></app-global-navbar>
+          <div class="container">
+              <h1 *ngIf="!shopid">Crear una tienda</h1>
+              <h1 *ngIf="shopid">Editar una tienda</h1>
+              <form [formGroup]="myForm" autocomplete="off">
+                  <mat-form-field appearance="fill">
+                      <mat-label>Nombre</mat-label>
+                      <input matInput formControlName="name" placeholder="Nombre">
+                  </mat-form-field>
+                  <br>
+                  <div *ngIf="myForm.get('name')?.hasError('required')&& myForm.get('name')?.touched">
+                      <span style="color: red">Este campo es obligatorio</span>
+                      </div>
+                      <div *ngIf="myForm.get('name')?.hasError('maxlength')">
+                      <span style="color: red">Máximo 50 caracteres</span>
+                      </div>
+                  <br>
+
+                  <mat-form-field appearance="fill">
+                      <mat-label>Teléfono</mat-label>
+                      <input matInput formControlName="phone" placeholder="Teléfono">
+                  </mat-form-field>
+                  <br>
+                  <div *ngIf="myForm.get('phone')?.hasError('required')&& myForm.get('phone')?.touched">
+                      <span style="color: red">Este campo es obligatorio</span>
+                      </div>
+                      <div *ngIf="myForm.get('phone')?.hasError('maxlength')">
+                      <span style="color: red">Máximo 9 digitos</span>
+                      </div>
+                      <div *ngIf="myForm.get('phone')?.hasError('minlength')">
+                          <span style="color: red">Minimo 9 digitos</span>
+                          </div>
+                  <br>
+
+                  <mat-form-field appearance="fill">
+                      <mat-label>Dirección</mat-label>
+                      <input matInput formControlName="adress" placeholder="Dirección">
+                  </mat-form-field>
+                  <br>
+                  <div *ngIf="myForm.get('adress')?.hasError('required')&& myForm.get('adress')?.touched">
+                      <span style="color: red">Este campo es obligatorio</span>
+                      </div>
+                      <div *ngIf="myForm.get('adress')?.hasError('maxlength')">
+                      <span style="color: red">Máximo 50 caracteres</span>
+                      </div>
+
+                  <br>
+
+                  <mat-form-field appearance="fill">
+                      <mat-label>Descripcion</mat-label>
+                      <textarea matInput formControlName="description"></textarea>
+                    </mat-form-field>
+                    <br>
+                    <div *ngIf="myForm.get('description')?.hasError('required')&& myForm.get('description')?.touched">
+                      <span style="color: red">Este campo es obligatorio</span>
+                      </div>
+                      <div *ngIf="myForm.get('description')?.hasError('maxlength')">
+                      <span style="color: red">Máximo 200 caracteres</span>
+                      </div>
+
+                    <br>
+
+              </form>
+              <div class="actions">
+                  <div class="save">
+                      <button mat-raised-button [disabled]= "myForm.invalid" (click)="saveShop()"> Guardar</button>
+                  </div>
+                  <div class="cancel">
+                      <button mat-raised-button routerLink="/user/{{id}}"> Cancelar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>

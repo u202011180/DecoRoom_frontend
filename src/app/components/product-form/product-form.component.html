@@ -1,0 +1,186 @@
+<body>
+  <app-global-navbar [userID]="user.id"></app-global-navbar>
+
+  <div class="form">
+
+      <div class="heading">
+          <h1>Agregar producto a <span>{{shopname}}</span> </h1>
+      </div>
+
+      <div class="linea"></div>
+
+      <div class="content">
+          <div class="formProduct">
+              <div class="form-content">
+                  <form [formGroup]="myForm" autocomplete="off" color="secondary">
+
+                      <mat-form-field appearance="fill">
+                          <mat-label>Nombre del producto</mat-label>
+                          <input matInput formControlName="name" placeholder="Nombre del producto">
+                      </mat-form-field>
+                      <br>
+                  <div *ngIf="myForm.get('name')?.hasError('required')&& myForm.get('name')?.touched">
+                      <span style="color: red">Este campo es obligatorio</span>
+                      </div>
+                      <div *ngIf="myForm.get('name')?.hasError('maxlength')">
+                      <span style="color: red">Máximo 60 caracteres</span>
+                      </div>
+                  <br>
+
+                      <div class="model3">
+                          <mat-form-field appearance="fill">
+                              <mat-label>Cantidad</mat-label>
+                              <input matInput formControlName="quantity" placeholder="Cantidad">
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('quantity')?.hasError('required')&& myForm.get('quantity')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+
+                          <mat-form-field appearance="fill">
+                              <mat-label>Precio</mat-label>
+                              <input matInput formControlName="price" placeholder="Precio">
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('price')?.hasError('required')&& myForm.get('price')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+                          <mat-form-field appearance = "fill">
+                              <mat-label>Tipo de precio</mat-label>
+                              <mat-select formControlName = "pricetype">
+                                  <mat-option *ngFor="let pricetype of pricetypes" [value]="pricetype.name">
+                                      {{pricetype.name}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('pricetype')?.hasError('required')&& myForm.get('pricetype')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+                      </div>
+
+                      <mat-form-field appearance="fill">
+                          <mat-label>Marca</mat-label>
+                          <input matInput formControlName="brand" placeholder="Marca">
+                      </mat-form-field>
+                      <br>
+                      <div *ngIf="myForm.get('brand')?.hasError('required')&& myForm.get('brand')?.touched">
+                          <span style="color: red">Este campo es obligatorio</span>
+                          </div>
+                          <div *ngIf="myForm.get('brand')?.hasError('maxlength')">
+                          <span style="color: red">Máximo 50 caracteres</span>
+                          </div>
+
+                      <br>
+
+                      <div class="model2">
+
+                          <mat-form-field appearance = "fill">
+                              <mat-label>Tipo de mueble</mat-label>
+                              <mat-select formControlName = "type">
+                                  <mat-option *ngFor="let type of types" [value]="type.name">
+                                      {{type.name}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('type')?.hasError('required')&& myForm.get('type')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+                      </div>
+
+                      <div class="model2">
+                          <mat-form-field appearance = "fill">
+                              <mat-label>Material</mat-label>
+                              <mat-select formControlName = "material">
+                                  <mat-option *ngFor="let material of materials" [value]="material.name">
+                                      {{material.name}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('material')?.hasError('required')&& myForm.get('material')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+
+                          <mat-form-field appearance = "fill">
+                              <mat-label>Tamaño</mat-label>
+                              <mat-select formControlName = "size">
+                                  <mat-option *ngFor="let size of sizes" [value]="size.name">
+                                      {{size.name}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('size')?.hasError('required')&& myForm.get('size')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+                      </div>
+
+                      <div class="model2">
+                          <mat-form-field appearance = "fill">
+                              <mat-label>Estado</mat-label>
+                              <mat-select formControlName = "season">
+                                  <mat-option *ngFor="let season of seasons" [value]="season.name">
+                                      {{season.name}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('season')?.hasError('required')&& myForm.get('season')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+
+                          <mat-form-field appearance="fill">
+                              <mat-label>Año</mat-label>
+                              <input matInput formControlName="year" placeholder="Año">
+                          </mat-form-field>
+                          <br>
+                          <div *ngIf="myForm.get('year')?.hasError('required')&& myForm.get('year')?.touched">
+                              <span style="color: red">Este campo es obligatorio</span>
+                              </div>
+
+                          <br>
+                      </div>
+                  </form>
+              </div>
+
+              <div class="actions">
+                  <div class="save">
+                      <button *ngIf="!verifyProduct()"[disabled]= "myForm.invalid" mat-raised-button (click)="saveProduct()" >Agregar producto</button>
+                      <button *ngIf="verifyProduct()" [disabled]= "myForm.invalid" mat-raised-button (click)="saveProduct()" >Guardar cambios</button>
+                  </div>
+                  <div class="cancel" *ngIf="shopfound">
+                      <button mat-raised-button (click)="back()" >Cancelar</button>
+                  </div>
+              </div>
+          </div>
+          <div class="image">
+              <button mat-raised-button class="contenedor-btn-file">
+                  <i class="fas fa-file"></i>
+                  Agregar Imagen
+                  <label for="btn-file"></label>
+                  <input (change)="capturefile($event)" type="file" id="btn-file">
+              </button>
+              <div *ngIf="preview" class="preview">
+                  <img [src]="preview" alt="">
+              </div>
+          </div>
+      </div>
+  </div>
+
+</body>
